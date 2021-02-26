@@ -12,9 +12,9 @@ public final class ProcessorFile {
         return ProcessorFactory.getInstance().getDecompress(ignoreFolder).decompress(inputStream);
     }
 
-    public static File compress(final List<File> files, final String mediaType) throws IOException {
+    /*public static File compress(final List<File> files, final String mediaType) throws IOException {
         return ProcessorFactory.getInstance().getCompress(mediaType).compress(files);
-    }
+    }*/
 
     /**
      * 测试

@@ -19,7 +19,7 @@ public class Decompress7z extends AbstractDecompress {
     @Override
     public File decompress(final InputStream inputStream) throws IOException {
         final File dirOut = getTempDir();
-        final SeekableInMemoryByteChannel inMemoryByteChannel = new SeekableInMemoryByteChannel(IOUtils.toByteArray(inputStream));
+        /*final SeekableInMemoryByteChannel inMemoryByteChannel = new SeekableInMemoryByteChannel(IOUtils.toByteArray(inputStream));
 
         try (final SevenZFile sevenZFile = new SevenZFile(inMemoryByteChannel)) {
             SevenZArchiveEntry sevenZipEntry;
@@ -38,7 +38,7 @@ public class Decompress7z extends AbstractDecompress {
                     out.write(content);
                 }
             }
-        }
+        }*/
 
         return dirOut;
     }
