@@ -1,8 +1,6 @@
 package com.github.marcusvoltolim.fileprocessor;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.List;
 
 public final class ProcessorFile {
@@ -18,4 +16,31 @@ public final class ProcessorFile {
         return ProcessorFactory.getInstance().getCompress(mediaType).compress(files);
     }
 
+    /**
+     * 测试
+     * @param args
+     */
+    public static void main(String[] args) {
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        File file = null;
+        try{
+            String sourceFile = "D:\\网盘\\（Git同步）文档和代码\\rar解压问题\\rar解压问题思路.rar";
+            sourceFile = "D:\\网盘\\（Git同步）文档和代码\\rar解压问题\\go-janeiro-2018-RAR5.rar";
+            fis = new FileInputStream(new File(sourceFile));
+            ProcessorFile.decompress(fis);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
+
