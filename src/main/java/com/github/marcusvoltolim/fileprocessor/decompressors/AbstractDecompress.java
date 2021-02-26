@@ -15,7 +15,7 @@ import org.apache.tika.io.FilenameUtils;
 
 public abstract class AbstractDecompress implements IDecompress {
 
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss - ");
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH：mm：ss - ");
     private static final Pattern PATTERN = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
     protected final Logger log;
 
