@@ -16,7 +16,7 @@ import com.github.marcusvoltolim.fileprocessor.utils.MediaTypeUtils;
 public class ProcessorFactory {
 
     private static final Logger LOG = Logger.getLogger(ProcessorFactory.class.getName());
-    private static final String RAR5_MAGIC_NUMBER = "526172211A070100";
+    private static final String RAR5_MAGIC_NUMBER = "526172211A070100";//疑问:这是什么？
 
     private ProcessorFactory() {
 
@@ -26,12 +26,18 @@ public class ProcessorFactory {
         return new ProcessorFactory();
     }
 
-    public IDecompress getDecompress() {
-        return new DecompressAllFormatsUsingSevenZipLib(true);
+    /**
+     *
+     * @param ignoreFolder
+     * @return
+     */
+    public IDecompress getDecompress(boolean ignoreFolder) {
+        return new DecompressAllFormatsUsingSevenZipLib(ignoreFolder);
     }
 
     /**
      * Implementation specified for each extension.
+     * 疑问: 这个方法在哪里被调用了？ 但是这个方法是用来区分文件类型的无疑了！
      */
     @SuppressWarnings("unused")
     public IDecompress getDecompressSpecified(final InputStream inputStream, final boolean ignoreFolder) throws IOException {
@@ -69,6 +75,12 @@ public class ProcessorFactory {
         LOG.info("Decompress: " + classe.getName() + " found for file: " + extension);
     }
 
+    /**
+     * 疑问: 通过魔数就能识别是否是RAR5？
+     * @param inputStream
+     * @return
+     * @throws IOException
+     */
     private static boolean isRar5(final InputStream inputStream) throws IOException {
         final byte[] magicNumber = new byte[8];
         inputStream.read(magicNumber, 0, 8);

@@ -19,7 +19,7 @@ public final class MediaTypeUtils {
     }
 
     public static String getMediaType(final InputStream stream) throws IOException {
-        return TIKA.detect(stream);
+        return TIKA.detect(stream);//疑问: 这是什么神器，能识别文件类型？
     }
 
     public static boolean isZip(final String mediaType) {

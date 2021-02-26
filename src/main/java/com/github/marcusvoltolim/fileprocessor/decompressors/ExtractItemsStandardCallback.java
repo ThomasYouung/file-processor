@@ -28,25 +28,16 @@ public final class ExtractItemsStandardCallback {
         }
 
         try (
-            final RandomAccessFile randomAccessFile = new RandomAccessFile(
-                file,
-                READ);
-            final IInArchive inArchive = SevenZip.openInArchive(
-                null,
-                new RandomAccessFileInStream(randomAccessFile))
+            final RandomAccessFile randomAccessFile = new RandomAccessFile( file, READ);
+            final IInArchive inArchive = SevenZip.openInArchive( null, new RandomAccessFileInStream(randomAccessFile))
         ) {
 
             LOG.info("Hash\t|\tSize\t|\tFilename");
             LOG.info("----------+------------+---------");
 
-            final IntStream range = IntStream.range(0,
-                inArchive.getNumberOfItems());
-            final ExtractCallback extractCallback = new ExtractCallback(
-                inArchive,
-                ignoreFolder);
-            inArchive.extract(range.toArray(),
-                false,
-                extractCallback);
+            final IntStream range = IntStream.range(0, inArchive.getNumberOfItems());
+            final ExtractCallback extractCallback = new ExtractCallback(inArchive, ignoreFolder);
+            inArchive.extract(range.toArray(), false, extractCallback);
             return extractCallback.getFilesExtracteds();
 
         }

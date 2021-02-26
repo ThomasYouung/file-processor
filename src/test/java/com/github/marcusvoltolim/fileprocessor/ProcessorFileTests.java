@@ -15,7 +15,7 @@ class ProcessorFileTests {
 
     @Test
     void testDecompressZip() throws IOException {
-        File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2019.zip"));
+        File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2019.zip"),true);
 
         assertTrue(dirOut.isDirectory());
         assertEquals(3, getAmountFiles(dirOut));
@@ -31,7 +31,7 @@ class ProcessorFileTests {
 
     @Test
     void testDecompressRar() throws IOException {
-        final File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2017.rar"));
+        final File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2017.rar"), true);
 
         assertTrue(dirOut.isDirectory());
         assertEquals(3, getAmountFiles(dirOut));
@@ -39,7 +39,7 @@ class ProcessorFileTests {
 
     @Test
     void testDecompressRar5() throws IOException {
-        final File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2018-RAR5.rar"));
+        final File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2018-RAR5.rar"), true);
 
         assertTrue(dirOut.isDirectory());
         assertEquals(3, getAmountFiles(dirOut));
@@ -47,7 +47,7 @@ class ProcessorFileTests {
 
     @Test
     void testDecompress7Z() throws IOException {
-        final File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2018.7z"));
+        final File dirOut = ProcessorFile.decompress(getFile("go-janeiro-2018.7z"),true);
 
         assertTrue(dirOut.isDirectory());
         assertEquals(3, getAmountFiles(dirOut));
