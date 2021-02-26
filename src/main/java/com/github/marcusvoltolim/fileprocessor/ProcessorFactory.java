@@ -4,14 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import com.github.marcusvoltolim.fileprocessor.compress.CompressZip;
-import com.github.marcusvoltolim.fileprocessor.compress.ICompress;
-import com.github.marcusvoltolim.fileprocessor.decompressors.Decompress7z;
 import com.github.marcusvoltolim.fileprocessor.decompressors.DecompressAllFormatsUsingSevenZipLib;
-import com.github.marcusvoltolim.fileprocessor.decompressors.DecompressRar;
-import com.github.marcusvoltolim.fileprocessor.decompressors.DecompressZip;
+//import com.github.marcusvoltolim.fileprocessor.decompressors.DecompressRar;
+//import com.github.marcusvoltolim.fileprocessor.decompressors.DecompressZip;
 import com.github.marcusvoltolim.fileprocessor.decompressors.IDecompress;
-import com.github.marcusvoltolim.fileprocessor.utils.MediaTypeUtils;
+//import com.github.marcusvoltolim.fileprocessor.utils.MediaTypeUtils;
 
 public class ProcessorFactory {
 
@@ -40,8 +37,8 @@ public class ProcessorFactory {
      * 疑问: 这个方法在哪里被调用了？ 但是这个方法是用来区分文件类型的无疑了！
      */
     @SuppressWarnings("unused")
-    public IDecompress getDecompressSpecified(final InputStream inputStream, final boolean ignoreFolder) throws IOException {
-        final String mediaType = MediaTypeUtils.getMediaType(inputStream);
+    public IDecompress getDecompressSpecified(final InputStream inputStream, final boolean ignoreFolder) {
+        /*final String mediaType = MediaTypeUtils.getMediaType(inputStream);
         if (MediaTypeUtils.isZip(mediaType)) {
             loggingDecompress(DecompressZip.class, ".zip");
             return new DecompressZip(ignoreFolder);
@@ -60,16 +57,17 @@ public class ProcessorFactory {
             LOG.warning("No file-specific decompressors found: " + mediaType + " " +
                 ". It will be using the generic: " + DecompressAllFormatsUsingSevenZipLib.class.getName());
             return new DecompressAllFormatsUsingSevenZipLib(ignoreFolder);
-        }
+        }*/
+        return null;
     }
 
-    public ICompress getCompress(String mediaType) {
+    /*public ICompress getCompress(String mediaType) {
         if (MediaTypeUtils.isZip(mediaType)) {
             return new CompressZip();
         } else {
             throw new IllegalArgumentException("Compression not supported by file: " + mediaType);
         }
-    }
+    }*/
 
     private static void loggingDecompress(final Class classe, final String extension) {
         LOG.info("Decompress: " + classe.getName() + " found for file: " + extension);
